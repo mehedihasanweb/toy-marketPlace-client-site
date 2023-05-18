@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "image": "teddy1.jpg",
+        "name": "Cuddly Brown Bear",
+        "price": 29.99,
+        "rating": 4.5
+    },
+    {
+        "id": 2,
+        "image": "teddy2.jpg",
+        "name": "Fluffy White Bear",
+        "price": 24.99,
+        "rating": 4.2
+    },
+    {
+        "id": 3,
+        "image": "teddy3.jpg",
+        "name": "Sleepy Bear",
+        "price": 19.99,
+        "rating": 4.0
+    }
+]

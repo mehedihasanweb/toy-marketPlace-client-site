@@ -27,14 +27,6 @@ const Footer = () => {
                         <li><FaInstagram className='h-7 w-7 hover:bg-orange-300 rounded-xl' /></li>
                     </ul>
                 </div>
-                {/* <div className="">
-                        <h3>Follow Us</h3>
-                        <ul className="social-media-links">
-                            <li><a href="#"><i className="fab fa-facebook"></i></a></li>
-                            <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-                        </ul>
-                    </div> */}
             </div>
             <p className='text-center mt-6'>&copy; 2023 Petito. All rights reserved.</p>
         </div>
