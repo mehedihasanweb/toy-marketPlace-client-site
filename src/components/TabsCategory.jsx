@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import teddy from '../assets/teddy.jpg'
@@ -10,233 +10,78 @@ import dogs2 from '../assets/dogs2.jpeg'
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
+import SingleItem from './SingleItem';
 
 const TabsCategory = () => {
+    const [datas, setDatas] = useState([])
+    const [allData, setAlldata] = useState([])
+
     const { users } = useContext(AuthContext)
 
-    const handleDetails = () => {
+
+    const handleViewDetails = () => {
         if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
+            return toast("“You have to log in first to view details”");
         }
         else {
             <Navigate />
         }
     }
-    const handleDetails1 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
+
+    const handle = (category) => {
+        const url = `http://localhost:5000/teddys?CategoryName=${category}`
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => setDatas(data))
     }
-    const handleDetails2 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
-    const handleDetails3 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
-    const handleDetails4 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
-    const handleDetails5 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
-    const handleDetails6 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
-    const handleDetails7 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
-    const handleDetails8 = () => {
-        if (!users) {
-            toast("“You have to log in first to view details”");
-            return <Navigate to='/login' />
-        }
-        else {
-            <Navigate />
-        }
-    }
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/teddys')
+        .then(res => res.json())
+        .then(data => setAlldata(data))
+    },[])
 
     return (
         <div>
             <div className='text-center'>
                 <h2 className='font-bold text-teal-300 text-xl'>Out Products</h2>
                 <h2 className='text-3xl pb-4 font-bold '>Shop By Category</h2>
-                {/* <Category /> */}
+                
             </div>
             <Tabs className='text-center'>
                 <TabList>
-                    <Tab>Teddy Bear</Tab>
-                    <Tab>Horse</Tab>
-                    <Tab>dogs</Tab>
+                <Tab>All Tedys</Tab>
+                    <Tab onClick={()=>handle('teddy')}>Teddy Bear</Tab>
+                    <Tab onClick={()=>handle('horse')}>Horse</Tab>
+                    <Tab onClick={()=>handle('dogs')}>dogs</Tab>
                 </TabList>
-
                 <TabPanel>
-                    <div className='md:flex justify-center gap-3 mb-6'>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={teddy} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Cuddly Brown Bear</h2>
-                                <p>Price: $29.99</p>
-                                <p>Rating: 4.5</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails} className="btn btn-outline btn-error">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={teddy2} alt="Shoes" className="rounded-xl h-72 " />
-                            </figure>
-                            <div className="card-body items-center text-center ">
-                                <h2 className="card-title">Fluffy White Bear</h2>
-                                <p className='p-0 m-0'>Price: $24.99</p>
-                                <p className='p-0 m-0'>Rating: 4.2</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails1} className="btn btn-outline btn-error">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={teddy} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Cuddly Brown Bear</h2>
-                                <p>Price: $29.99</p>
-                                <p>Rating: 4.5</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails2} className="btn btn-outline btn-error">View Details</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                        {
+                            allData.map(data => <SingleItem key={data._id} handleViewDetails={handleViewDetails} data={data} />)
+                        }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='md:flex justify-center gap-3 mb-6'>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={horse} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Plush Brown Horse</h2>
-                                <p>Price: $19.99</p>
-                                <p>Rating: 4.5</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails3} className="btn btn-outline btn-error ">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={horse2} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Wooden Horse Puzzle</h2>
-                                <p>Price: $14.99</p>
-                                <p>Rating: 4.2</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails4} className="btn btn-outline btn-error">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={horse} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Plush Brown Horse</h2>
-                                <p>Price: $19.99</p>
-                                <p>Rating: 4.5</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails5} className="btn btn-outline btn-error ">View Details</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                        {
+                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails}/>)
+                        }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='md:flex justify-center gap-3 mb-6'>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={dogs} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Plush Squeaky Bone</h2>
-                                <p>Price: $9.99</p>
-                                <p>Rating: 4.5</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails6} className="btn btn-primary">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={dogs2} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Rubber Chew Toy</h2>
-                                <p>Price: $14.99</p>
-                                <p>Rating: 4.4</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails7} className="btn btn-outline btn-error ">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={dogs} alt="Shoes" className="rounded-xl h-72" />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">Plush Squeaky Bone</h2>
-                                <p>Price: $9.99</p>
-                                <p>Rating: 4.5</p>
-                                <div className="card-actions">
-                                    <button onClick={handleDetails8} className="btn btn-primary">View Details</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                        {
+                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails}/>)
+                        }
+                    </div>
+                </TabPanel>
+                <TabPanel>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                        {
+                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails}/>)
+                        }
                     </div>
                 </TabPanel>
             </Tabs>
