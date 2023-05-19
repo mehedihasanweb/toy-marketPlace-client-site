@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Provider/AuthProvider';
 const AddToys = () => {
-    const [selectedOption, setSelectedOption] = useState('option1');
+    const [selectedOption, setSelectedOption] = useState('toys');
+
+    const {users} = useContext(AuthContext)
 
     const handleAddTeddy = (event) => {
         event.preventDefault()
@@ -10,14 +13,14 @@ const AddToys = () => {
         const Name = form.name.value
         const quantity = form.quantity.value
         const SellerName = form.seller.value
-        const sellerEmail = form.sellerEmail.value
+        const sellerMail = form.sellerEmail.value
         const CategoryName = form.CategoryName.value
         const Price = form.price.value
         const Rating = form.ratings.value
         const description = form.description.value
         const Picture = form.photo.value
 
-        const product = { Name, Picture, description, Rating, quantity, SellerName, sellerEmail, CategoryName, Price}
+        const product = { Name, Picture, description, Rating, quantity, SellerName, sellerMail, CategoryName, Price}
 
         console.log(product);
 
@@ -73,7 +76,7 @@ const AddToys = () => {
                             <span className="label-text">Seller Name</span>
                         </label>
                         <label className="input-group ">
-                            <input type="text" name="seller" placeholder="Seller Name" className="input input-bordered w-full" />
+                            <input type="text" defaultValue={users.displayName} name="seller" placeholder="Seller Name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 md:ml-6">
@@ -81,7 +84,7 @@ const AddToys = () => {
                             <span className="label-text">Seller Email</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="sellerEmail" placeholder="Seller Email" className="input input-bordered w-full" />
+                            <input type="text" defaultValue={users.email} name="sellerEmail" placeholder="Seller Email" className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>

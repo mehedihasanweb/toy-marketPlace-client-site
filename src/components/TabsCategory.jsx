@@ -14,13 +14,13 @@ import SingleItem from './SingleItem';
 
 const TabsCategory = () => {
     const [datas, setDatas] = useState([])
-    
+
 
     const { users } = useContext(AuthContext)
-    
-    
+
+
     const handleViewDetails = (id) => {
-       
+
         if (!users) {
             return toast("“You have to log in first to view details”");
         }
@@ -29,26 +29,26 @@ const TabsCategory = () => {
     const handle = (category) => {
         const url = `http://localhost:5000/teddys?CategoryName=${category}`
 
-            fetch(url)
-                .then(res => res.json())
-                .then(data => setDatas(data))
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setDatas(data))
     }
 
-    
+
 
     return (
         <div>
             <div className='text-center'>
                 <h2 className='font-bold text-teal-300 text-xl'>Out Products</h2>
                 <h2 className='text-3xl pb-4 font-bold '>Shop By Category</h2>
-                
+
             </div>
             <Tabs className='text-center'>
                 <TabList>
-                {/* <Tab>All Tedys</Tab> */}
-                    <Tab onClick={()=>handle('teddy')}>Teddy Bear</Tab>
-                    <Tab onClick={()=>handle('horse')}>Horse</Tab>
-                    <Tab onClick={()=>handle('dogs')}>dogs</Tab>
+                    {/* <Tab>All Tedys</Tab> */}
+                    <Tab onClick={() => handle('teddy')}>Teddy Bear</Tab>
+                    <Tab onClick={() => handle('horse')}>Horse</Tab>
+                    <Tab onClick={() => handle('dogs')}>dogs</Tab>
                 </TabList>
                 {/* <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -60,21 +60,21 @@ const TabsCategory = () => {
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {
-                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails}/>)
+                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails} />)
                         }
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {
-                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails}/>)
+                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails} />)
                         }
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {
-                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails}/>)
+                            datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails} />)
                         }
                     </div>
                 </TabPanel>

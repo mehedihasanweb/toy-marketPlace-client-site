@@ -14,6 +14,8 @@ import PrivateRoute from './routes/PrivateRoute.jsx'
 import Questions from './Pages/Questions.jsx'
 import AddToys from './Pages/AddToys.jsx'
 import AllToys from './Pages/AllToys.jsx'
+import MyToys from './Pages/MyToys.jsx'
+import UpdateToys from './components/UpdateToys.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,11 +46,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'addToys',
-        element: <AddToys />
+        element: <PrivateRoute><AddToys /></PrivateRoute>
       },
       {
         path: 'allToys',
         element: <AllToys />
+      },
+      {
+        path: 'myToys',
+        element: <MyToys />
+      },
+      {
+        path: 'update',
+        element: <UpdateToys />
       }
     ]
   }
