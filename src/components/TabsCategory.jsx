@@ -14,7 +14,7 @@ import SingleItem from './SingleItem';
 
 const TabsCategory = () => {
     const [datas, setDatas] = useState([])
-    const [allData, setAlldata] = useState([])
+    
 
     const { users } = useContext(AuthContext)
     
@@ -34,11 +34,7 @@ const TabsCategory = () => {
                 .then(data => setDatas(data))
     }
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/teddys')
-        .then(res => res.json())
-        .then(data => setAlldata(data))
-    },[])
+    
 
     return (
         <div>
@@ -49,18 +45,18 @@ const TabsCategory = () => {
             </div>
             <Tabs className='text-center'>
                 <TabList>
-                <Tab>All Tedys</Tab>
+                {/* <Tab>All Tedys</Tab> */}
                     <Tab onClick={()=>handle('teddy')}>Teddy Bear</Tab>
                     <Tab onClick={()=>handle('horse')}>Horse</Tab>
                     <Tab onClick={()=>handle('dogs')}>dogs</Tab>
                 </TabList>
-                <TabPanel>
+                {/* <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {
                             allData.map(data => <SingleItem key={data._id} handleViewDetails={handleViewDetails} data={data} />)
                         }
                     </div>
-                </TabPanel>
+                </TabPanel> */}
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {

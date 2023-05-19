@@ -12,6 +12,8 @@ import AuthProvider from './Provider/AuthProvider.jsx'
 import ViewDetails from './Pages/ViewDetails.jsx'
 import PrivateRoute from './routes/PrivateRoute.jsx'
 import Questions from './Pages/Questions.jsx'
+import AddToys from './Pages/AddToys.jsx'
+import AllToys from './Pages/AllToys.jsx'
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: 'blog',
         element: <Questions />
+      },
+      {
+        path: 'addToys',
+        element: <AddToys />
+      },
+      {
+        path: 'allToys',
+        element: <AllToys />
       }
     ]
   }
