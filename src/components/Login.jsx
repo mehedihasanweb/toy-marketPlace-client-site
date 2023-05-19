@@ -12,7 +12,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/'
 
-    console.log(location);
+    // console.log(location);
 
     const handleSignIn = (event) => {
         event.preventDefault()
