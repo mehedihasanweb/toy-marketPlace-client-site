@@ -1,51 +1,43 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { googleLogin, signIn } = useContext(AuthContext)
-    // console.log(googleLogin);
-    // const [error, setError] = useState('')
-    // const [success, setSuccess] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
 
+    const from = location.state?.from?.pathname || '/'
 
-    const handleSignIn = (event) =>{
+    console.log(location);
+
+    const handleSignIn = (event) => {
         event.preventDefault()
 
-        // setError('')
-        // setSuccess('')
 
-        const form = event.target 
-        const email = form.email.value 
-        const password = form.password.value 
+        const form = event.target
+        const email = form.email.value
+        const password = form.password.value
 
         signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user
-            console.log(loggedUser);
-            toast("Login Successfully");
-        })
-        .catch(error =>{
-            toast(error.message);
-        })
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                toast("Login Successfully");
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                toast(error.message);
+            })
     }
 
-    const handleGoogleLogin = (event) => {
-        console.log("click");
-        event.preventDefault()
-
+    const handleGoogleLogin = () => {
 
         googleLogin()
-        .then(result => {
-            const googleUser = result.user 
-            console.log(googleUser);
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+        navigate(from, { replace: true })
     }
 
     return (
@@ -76,8 +68,8 @@ const Login = () => {
                         </div>
                         <p className='text-center'>Don't Have an Account? <Link to='/registration' className='text-error'>Please Register</Link></p>
                         <div className="divider">OR</div>
-                        <button onClick={handleGoogleLogin} className="mb-4 btn btn-outline btn-error btn-wide mx-auto"><FaGoogle className='h-4 w-4 mt-1' /><span className='text-xl ml-2'>Google</span></button>
                     </form>
+                    <button onClick={handleGoogleLogin} className="mb-4 btn btn-outline btn-error btn-wide mx-auto"><FaGoogle className='h-4 w-4 mt-1' /><span className='text-xl ml-2'>Google</span></button>
 
                 </div>
             </div>

@@ -2,11 +2,10 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 
-const SingleItem = ({data, handleViewDetails}) => {
-    const {users} = useContext(AuthContext)
+const SingleItem = ({ data, handleViewDetails }) => {
 
-    console.log(data);
-    const {Name, Picture, Price, Rating} = data
+   
+    const { Name, Picture, Price, Rating, _id } = data
     return (
         <div className='md:flex justify-center gap-3 mb-6'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -18,7 +17,7 @@ const SingleItem = ({data, handleViewDetails}) => {
                     <p>Price: ${Price}</p>
                     <p>Rating: {Rating}</p>
                     <div className="card-actions">
-                        <Link to={!users ? `/login` : ''}><button onClick={handleViewDetails} className="btn btn-outline btn-error">View Details</button></Link>
+                        <Link to={`/details/${_id}`}><button onClick={() => handleViewDetails(_id)} className="btn btn-outline btn-error">View Details</button></Link>
                     </div>
                 </div>
             </div>

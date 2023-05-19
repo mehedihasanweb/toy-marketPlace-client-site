@@ -9,7 +9,7 @@ import dogs from '../assets/dogs.jpeg'
 import dogs2 from '../assets/dogs2.jpeg'
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import SingleItem from './SingleItem';
 
 const TabsCategory = () => {
@@ -17,14 +17,12 @@ const TabsCategory = () => {
     const [allData, setAlldata] = useState([])
 
     const { users } = useContext(AuthContext)
-
-
-    const handleViewDetails = () => {
+    
+    
+    const handleViewDetails = (id) => {
+       
         if (!users) {
             return toast("“You have to log in first to view details”");
-        }
-        else {
-            <Navigate />
         }
     }
 

@@ -9,6 +9,9 @@ import Home from './Pages/Home/Home.jsx'
 import Login from './components/Login.jsx'
 import Registration from './components/Registration.jsx'
 import AuthProvider from './Provider/AuthProvider.jsx'
+import ViewDetails from './Pages/ViewDetails.jsx'
+import PrivateRoute from './routes/PrivateRoute.jsx'
+import Questions from './Pages/Questions.jsx'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,15 @@ const router = createBrowserRouter([
       {
         path: 'registration',
         element: <Registration />
+      },
+      {
+        path: 'details/:id',
+        element: <PrivateRoute><ViewDetails /></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/teddys/${params.id}`)
+      },
+      {
+        path: 'blog',
+        element: <Questions />
       }
     ]
   }
