@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
     const { users } = useContext(AuthContext)
@@ -8,16 +9,50 @@ const MyToys = () => {
 
     const [toys, setToys] = useState([])
 
+    const handleDelete = (id) => {
+        console.log(id);
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/teddys/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = toys.filter(toy => toy._id !== id)
+                            setToys(remaining)
+                        }
+                    })
+            }
+        })
+
+
+
+    }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/teddys/${users.email}`)
+        fetch(`http://localhost:5000/teddys/${users?.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [])
 
-    const handleUpdate = () =>{
-        console.log('click');
-    }
+    console.log(toys);
 
     return (
         <div className="overflow-x-auto">
@@ -44,8 +79,8 @@ const MyToys = () => {
                             <td>{toy.SubCategoryName}</td>
                             <td>{toy.Price}</td>
                             <td>{toy.quantity}</td>
-                            <td><Link to='/addToys'><button onClick={handleUpdate} className='btn btn-outline btn-error'>Update</button></Link></td>
-                            <td><button className='btn btn-outline btn-error'>Delete</button></td>
+                            <td><Link to={`/updateToys/${toy._id}`}><button className='btn btn-outline btn-error'>Update</button></Link></td>
+                            <td><button onClick={() => handleDelete(toy._id)} className='btn btn-outline btn-error'>Delete</button></td>
                         </tr>
                     ))}
 

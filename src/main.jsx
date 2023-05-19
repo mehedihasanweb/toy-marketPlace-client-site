@@ -54,11 +54,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'myToys',
-        element: <MyToys />
+        element: <PrivateRoute><MyToys /></PrivateRoute>
       },
       {
-        path: 'update',
-        element: <UpdateToys />
+        path: 'updateToys/:id',
+        element: <PrivateRoute><UpdateToys /></PrivateRoute>,
+        loader: ({params}) =>fetch(`http://localhost:5000/teddys/${params.id}`)
       }
     ]
   }
