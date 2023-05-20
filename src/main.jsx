@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: 'details/:id',
         element: <PrivateRoute><ViewDetails /></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/teddys/${params.id}`)
+        loader: ({params}) => fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${params.id}`)
       },
       {
         path: 'blog',
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       {
         path: 'updateToys/:id',
         element: <PrivateRoute><UpdateToys /></PrivateRoute>,
-        loader: ({params}) =>fetch(`http://localhost:5000/teddys/${params.id}`)
+        loader: ({params}) =>fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${params.id}`)
       }
     ]
   }

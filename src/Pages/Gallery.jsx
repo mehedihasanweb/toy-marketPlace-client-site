@@ -5,10 +5,10 @@ import img3 from '../assets/image3.jpg'
 import img4 from '../assets/image4.png'
 import img5 from '../assets/image5.png'
 import img6 from '../assets/image6.jpg'
-
+import 'aos/dist/aos.css'; 
 const Gallery = () => {
     return (
-        <div className='my-12'>
+        <div className='my-12'  data-aos="fade-up">
             <h2 className='text-5xl text-center mb-16 font-bold'>Our Products Gallery</h2>
             
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>

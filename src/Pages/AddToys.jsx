@@ -15,7 +15,7 @@ const AddToys = () => {
         const SellerName = form.seller.value
         const sellerMail = form.sellerEmail.value
         const CategoryName = form.CategoryName.value
-        const Price = form.price.value
+        const Price = parseInt(form.price.value)
         const Rating = form.ratings.value
         const description = form.description.value
         const Picture = form.photo.value
@@ -24,7 +24,7 @@ const AddToys = () => {
 
         console.log(product);
 
-        fetch('http://localhost:5000/teddys',{
+        fetch('https://toy-marketplace-server-eta-three.vercel.app/teddys',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

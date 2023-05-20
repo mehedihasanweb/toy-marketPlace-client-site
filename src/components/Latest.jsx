@@ -4,14 +4,14 @@ const Latest = () => {
     const [latest, setLatest] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/latest')
+        fetch('https://toy-marketplace-server-eta-three.vercel.app/latest')
             .then(res => res.json())
             .then(data => setLatest(data))
     }, [])
     console.log(latest);
 
     return (
-        <div className='py-8'>
+        <div className='py-8' data-aos="fade-up">
             <h2 className='text-5xl text-center font-semibold'>Latest News</h2>
             <h2 className='text-xl pt-4 text-orange-300 text-center font-semibold'>OUR NEWS & EVENTS</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>

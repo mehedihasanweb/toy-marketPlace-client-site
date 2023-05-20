@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import 'aos/dist/aos.css'; 
 
 const SingleItem = ({ data, handleViewDetails }) => {
 
    
     const { Name, Picture, Price, Rating, _id } = data
     return (
-        <div className='md:flex justify-center gap-3 mb-6'>
+        <div data-aos="zoom-out" className='md:flex justify-center gap-3 mb-6'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                     <img src={Picture} alt="Shoes" className="rounded-xl h-72" />

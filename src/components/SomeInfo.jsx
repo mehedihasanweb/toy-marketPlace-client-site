@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaRegSmileBeam } from 'react-icons/fa';
+import 'aos/dist/aos.css'; 
 
 const SomeInfo = () => {
     return (
-        <div className='my-8'>
+        <div data-aos="fade-down" className='my-8' >
             <h2 className='text-4xl text-center font-semibold mb-12'>Check Offer & Satisfaction</h2>
             <div className='grid gap-6  justify-items-center grid-cols-1 md:grid-cols-2 text-center'>
                 <div>

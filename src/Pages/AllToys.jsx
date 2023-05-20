@@ -9,7 +9,7 @@ const AllToys = () => {
     // const [searchText, setSearchText] = useState('')
 
     useEffect(() => {
-        fetch('http://localhost:5000/teddys')
+        fetch('https://toy-marketplace-server-eta-three.vercel.app/teddys')
             .then(res => res.json())
             .then(data => setAlldata(data))
     }, [])
@@ -35,7 +35,7 @@ const AllToys = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     // const handleSearch = () => {
-    //     fetch(`http://localhost:5000/teddys/${searchText}`)
+    //     fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${searchText}`)
     //         .then((res) => res.json())
     //         .then((data) => {
     //             console.log(data);
