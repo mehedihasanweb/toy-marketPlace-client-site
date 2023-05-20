@@ -6,7 +6,7 @@ const ViewDetails = () => {
     const { Picture, Name, Price, Rating, SellerName, description, quantity, sellerMail } = loadedData
 
     return (
-        <div className="card w-96 my-20 mx-auto glass">
+        <div data-aos="zoom-in" className="card w-96 my-20 mx-auto glass">
             <figure><img src={Picture} alt="car!" /></figure>
             <div className="card-body">
                 <h2 className="text-2xl font-bold">Name: {Name}</h2>

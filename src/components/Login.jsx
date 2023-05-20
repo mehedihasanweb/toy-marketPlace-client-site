@@ -41,7 +41,7 @@ const Login = () => {
     }
 
     return (
-        <div className="hero mt-20">
+        <div className="hero mt-20" data-aos="zoom-in">
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>

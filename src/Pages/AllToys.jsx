@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+
 const AllToys = () => {
     const [allData, setAlldata] = useState([])
 
@@ -30,7 +31,7 @@ const AllToys = () => {
     const limitedToys = filteredToys.slice(0, limit);
 
     return (
-        <div className="overflow-x-auto">
+        <div data-aos="zoom-in" className="overflow-x-auto">
             <h1 className='text-3xl text-center font-semibold'>All Toys</h1>
             <div className='flex my-6 justify-center'>
                 <input type="text" value={searchQuery}

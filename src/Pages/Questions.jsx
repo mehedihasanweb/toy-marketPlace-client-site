@@ -2,7 +2,7 @@ import React from 'react';
 
 const Questions = () => {
     return (
-        <div>
+        <div data-aos="zoom-in">
             <h1 className='text-center mb-10 mt-10 text-red-400 text-3xl font-bold'>This is Question Answering Page</h1>
             <div className='m-24 border rounded p-10'>
                 <h1 className='text-xl font-bold text-center text-red-400'>What is an access token and refresh token?</h1>

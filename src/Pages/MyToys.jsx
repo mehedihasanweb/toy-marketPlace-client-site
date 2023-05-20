@@ -52,10 +52,9 @@ const MyToys = () => {
             .then(data => setToys(data))
     }, [])
 
-    console.log(toys);
 
     return (
-        <div className="overflow-x-auto">
+        <div data-aos="zoom-in" className="overflow-x-auto">
             <table className="table table-compact w-full">
                 <thead>
                     <tr>
