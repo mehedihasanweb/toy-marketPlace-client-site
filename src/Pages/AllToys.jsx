@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SingleItem from '../components/SingleItem';
-import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const AllToys = () => {
     const [allData, setAlldata] = useState([])
-    // const [searchText, setSearchText] = useState('')
 
     useEffect(() => {
         fetch('https://toy-marketplace-server-eta-three.vercel.app/teddys')
@@ -21,27 +18,9 @@ const AllToys = () => {
         }
     }
 
-    // const filteredItems = allData.filter(item => {
-    //     if (selectedCategory && item.CategoryName !== selectedCategory) {
-    //         return false;
-    //     }
-
-    //     return item.CategoryName.toLowerCase().includes(searchText.toLowerCase());
-    // });
-
-    // console.log(searchText);
-
 
     const [searchQuery, setSearchQuery] = useState('');
 
-    // const handleSearch = () => {
-    //     fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${searchText}`)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setJobs(data);
-    //         });
-    // };
 
     const filteredToys = allData.filter(toy => {
         return toy.Name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -49,9 +28,6 @@ const AllToys = () => {
 
     const limit = 20;
     const limitedToys = filteredToys.slice(0, limit);
-  
-
-    // onClick={handleSearch}
 
     return (
         <div className="overflow-x-auto">

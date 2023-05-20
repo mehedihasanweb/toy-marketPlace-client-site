@@ -6,6 +6,8 @@ import img4 from '../assets/image4.png'
 import img5 from '../assets/image5.png'
 import img6 from '../assets/image6.jpg'
 import 'aos/dist/aos.css'; 
+
+
 const Gallery = () => {
     return (
         <div className='my-12'  data-aos="fade-up">

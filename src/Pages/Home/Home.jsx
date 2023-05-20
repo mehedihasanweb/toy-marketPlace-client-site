@@ -6,9 +6,6 @@ import Gallery from '../Gallery';
 import TabsCategory from '../../components/TabsCategory';
 import Latest from '../../components/Latest';
 import SomeInfo from '../../components/SomeInfo';
-// import Category from '../../components/Category';
-// import Categories from '../Categories';
-// import Category from '../../components/Category';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
@@ -46,7 +43,6 @@ const Home = () => {
             </div>
             <Latest />
             <Gallery />
-            {/* <Category /> */}
             <TabsCategory />
             <SomeInfo />
             
@@ -54,7 +50,5 @@ const Home = () => {
 
     );
 };
-// AOS.init({
-//     duration: 1200
-//   });
+
 export default Home;

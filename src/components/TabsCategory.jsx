@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import teddy from '../assets/teddy.jpg'
-import teddy2 from '../assets/teddy2.jpg'
-import horse from '../assets/horse.jpeg'
-import horse2 from '../assets/horse2.jpeg'
-import dogs from '../assets/dogs.jpeg'
-import dogs2 from '../assets/dogs2.jpeg'
+// import teddy from '../assets/teddy.jpg'
+// import teddy2 from '../assets/teddy2.jpg'
+// import horse from '../assets/horse.jpeg'
+// import horse2 from '../assets/horse2.jpeg'
+// import dogs from '../assets/dogs.jpeg'
+// import dogs2 from '../assets/dogs2.jpeg'
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+// import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import SingleItem from './SingleItem';
 import 'aos/dist/aos.css'; 
 
@@ -52,7 +52,7 @@ const TabsCategory = () => {
                     <Tab onClick={() => handle('dogs')}>dogs</Tab>
                 </TabList>
                 
-                <TabPanel data-aos="fade-left">
+                <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {
                             datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails} />)
