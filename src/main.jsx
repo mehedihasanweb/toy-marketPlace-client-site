@@ -55,11 +55,11 @@ const router = createBrowserRouter([
         path: 'myToys',
         element: <PrivateRoute><MyToys /></PrivateRoute>
       },
-      // {
-      //   path: 'updateToys/:id',
-      //   element: <PrivateRoute><UpdateToys /></PrivateRoute>,
-      //   loader: ({params}) =>fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${params.id}`)
-      // }
+      {
+        path: 'updateToys/:id',
+        element: <PrivateRoute><UpdateToys /></PrivateRoute>,
+        loader: ({params}) =>fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${params.id}`)
+      }
     ]
   }
 ])
