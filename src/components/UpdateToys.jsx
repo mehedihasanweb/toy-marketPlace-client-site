@@ -18,7 +18,7 @@ const UpdateToys = () => {
 
         const form = event.target
         const quantity = form.quantity.value
-        const Price = form.price.value
+        const Price = parseInt(form.price.value)
         const Rating = form.ratings.value
         const description = form.description.value
 
@@ -46,7 +46,7 @@ const UpdateToys = () => {
     }
 
     return (
-        <div className=" bg-red-50 md:p-24 p-6">
+        <div data-aos="zoom-in" className=" bg-red-50 md:p-24 p-6">
             <h2 className="text-5xl text-center font-bold">Update Toys</h2>
             <p className="text-gray-400 text-center my-8">A toy is an object that's made for a child to play with. Your favorite childhood toy might have been a dollhouse, <br />
                 a stuffed animal, or a set of blocks. Some toys are specifically designed for play, <br /> like a small wooden train set or a baby's shape sorter.</p>
