@@ -47,7 +47,7 @@ const UpdateToys = () => {
 
     return (
         <div className=" bg-red-50 md:p-24 p-6">
-            <h2 className="text-5xl text-center font-bold">Add New Toys</h2>
+            <h2 className="text-5xl text-center font-bold">Update Toys</h2>
             <p className="text-gray-400 text-center my-8">A toy is an object that's made for a child to play with. Your favorite childhood toy might have been a dollhouse, <br />
                 a stuffed animal, or a set of blocks. Some toys are specifically designed for play, <br /> like a small wooden train set or a baby's shape sorter.</p>
             <form className="md:mx-48" onSubmit={handleUpdate}>

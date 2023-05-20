@@ -47,7 +47,7 @@ const MyToys = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/teddys/${users?.email}`)
+        fetch(`http://localhost:5000/bookings?sellerMail=${users.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [])

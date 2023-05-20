@@ -4,6 +4,8 @@ import image1 from '../../assets/pet-3.png'
 import image3 from '../../assets/pet1.jpeg'
 import Gallery from '../Gallery';
 import TabsCategory from '../../components/TabsCategory';
+import Latest from '../../components/Latest';
+import SomeInfo from '../../components/SomeInfo';
 // import Category from '../../components/Category';
 // import Categories from '../Categories';
 // import Category from '../../components/Category';
@@ -41,9 +43,11 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <Latest />
             <Gallery />
             {/* <Category /> */}
             <TabsCategory />
+            <SomeInfo />
         </>
 
     );

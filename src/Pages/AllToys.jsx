@@ -6,8 +6,7 @@ import { toast } from 'react-toastify';
 
 const AllToys = () => {
     const [allData, setAlldata] = useState([])
-    const [searchText, setSearchText] = useState('')
-
+    // const [searchText, setSearchText] = useState('')
 
     useEffect(() => {
         fetch('http://localhost:5000/teddys')
@@ -22,23 +21,45 @@ const AllToys = () => {
         }
     }
 
-    console.log(searchText);
+    // const filteredItems = allData.filter(item => {
+    //     if (selectedCategory && item.CategoryName !== selectedCategory) {
+    //         return false;
+    //     }
 
-    const handleSearch = () => {
-        fetch(`http://localhost:5000/teddys/${searchText}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setJobs(data);
-            });
-    };
+    //     return item.CategoryName.toLowerCase().includes(searchText.toLowerCase());
+    // });
+
+    // console.log(searchText);
+
+
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // const handleSearch = () => {
+    //     fetch(`http://localhost:5000/teddys/${searchText}`)
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             console.log(data);
+    //             setJobs(data);
+    //         });
+    // };
+
+    const filteredToys = allData.filter(toy => {
+        return toy.Name.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+
+    const limit = 20;
+    const limitedToys = filteredToys.slice(0, limit);
+  
+
+    // onClick={handleSearch}
 
     return (
         <div className="overflow-x-auto">
             <h1 className='text-3xl text-center font-semibold'>All Toys</h1>
             <div className='flex my-6 justify-center'>
-                <input type="text" onChange={(e) => setSearchText(e.target.value)} className='p-1 mr-2 border-2 rounded-lg pl-4' placeholder='Search' />
-                <button onClick={handleSearch} className='btn btn-outline btn-error'>Search</button>
+                <input type="text" value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)} className='p-1 mr-2 border-2 rounded-lg pl-4' placeholder='Search' />
+                <button className='btn btn-outline btn-error'>Search</button>
             </div>
             <table className="table table-compact w-full">
                 <thead>
@@ -53,9 +74,9 @@ const AllToys = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {allData.map((data, index) => (
+                    {limitedToys.map((data, index) => (
 
-                        <tr>
+                        <tr key={data._id}>
                             <th>{index + 1}</th>
                             <td>{data.Name}</td>
                             <td>{data.SellerName}</td>

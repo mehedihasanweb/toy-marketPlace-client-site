@@ -27,7 +27,7 @@ const TabsCategory = () => {
     }
 
     const handle = (category) => {
-        const url = `http://localhost:5000/teddys?CategoryName=${category}`
+        const url = `http://localhost:5000/tabs?CategoryName=${category}`
 
         fetch(url)
             .then(res => res.json())
@@ -50,13 +50,7 @@ const TabsCategory = () => {
                     <Tab onClick={() => handle('horse')}>Horse</Tab>
                     <Tab onClick={() => handle('dogs')}>dogs</Tab>
                 </TabList>
-                {/* <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                        {
-                            allData.map(data => <SingleItem key={data._id} handleViewDetails={handleViewDetails} data={data} />)
-                        }
-                    </div>
-                </TabPanel> */}
+                
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         {

@@ -20,7 +20,7 @@ const Footer = () => {
                     <h3 className='text-3xl'>Contact Us</h3>
                     <p>Email: info@patito.com</p>
                     <p>Phone: 123-456-7890</p>
-                    <p>Address: 123 Duck Street, Duckland</p>
+                    <p>Address: 123 Duck Street, Bangladesh</p>
                     <ul className="md:flex gap-4">
                         <li><FaFacebook className='h-7 w-7 hover:bg-orange-300 rounded-xl' /></li>
                         <li><FaTwitter className='h-7 w-7 hover:bg-orange-300 rounded-xl' /></li>
