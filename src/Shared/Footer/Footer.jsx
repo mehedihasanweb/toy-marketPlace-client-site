@@ -16,12 +16,12 @@ const Footer = () => {
                     <input type="text " className='w-[60%] p-2 rounded-md my-4' placeholder='Your Email' /><br />
                     <button className='btn btn-outline btn-error'>SUBSCRIBE NOW</button>
                 </div>
-                <div className="">
+                <div className="py-4">
                     <h3 className='text-3xl'>Contact Us</h3>
                     <p>Email: info@patito.com</p>
                     <p>Phone: 123-456-7890</p>
                     <p>Address: 123 Duck Street, Bangladesh</p>
-                    <ul className="md:flex gap-4">
+                    <ul className="flex gap-4">
                         <li><FaFacebook className='h-7 w-7 hover:bg-orange-300 rounded-xl' /></li>
                         <li><FaTwitter className='h-7 w-7 hover:bg-orange-300 rounded-xl' /></li>
                         <li><FaInstagram className='h-7 w-7 hover:bg-orange-300 rounded-xl' /></li>
