@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import SingleItem from './SingleItem';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 
 const TabsCategory = () => {
     const [datas, setDatas] = useState([])
@@ -33,16 +33,15 @@ const TabsCategory = () => {
                 <h2 className='text-3xl pb-4 font-bold '>Shop By Category</h2>
 
             </div>
-            <Tabs className='text-center'>
+            <Tabs className='text-center  mx-auto'>
                 <TabList>
-                    {/* <Tab>All Tedys</Tab> */}
                     <Tab onClick={() => handle('teddy')}>Teddy Bear</Tab>
                     <Tab onClick={() => handle('horse')}>Horse</Tab>
                     <Tab onClick={() => handle('dogs')}>dogs</Tab>
                 </TabList>
-                
+
                 <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                    <div className='grid grid-cols-1 w-full md:grid-cols-3 gap-4'>
                         {
                             datas.map(data => <SingleItem key={data.id} data={data} handleViewDetails={handleViewDetails} />)
                         }

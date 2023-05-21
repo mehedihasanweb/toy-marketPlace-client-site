@@ -8,12 +8,12 @@ const SingleItem = ({ data, handleViewDetails }) => {
    
     const { Name, Picture, Price, Rating, _id } = data
     return (
-        <div data-aos="zoom-out" className='md:flex justify-center gap-3 mb-6'>
-            <div className="card w-96 bg-base-100 shadow-xl">
+        <div data-aos="zoom-out" className='md:flex w-full justify-center gap-3 mb-6'>
+            <div className="card w-full mx-auto bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                     <img src={Picture} alt="Shoes" className="rounded-xl h-72" />
                 </figure>
-                <div className="card-body items-center text-center">
+                <div className="card-body w-full items-center text-center">
                     <h2 className="card-title">{Name}</h2>
                     <p>Price: ${Price}</p>
                     <p>Rating: {Rating}</p>
