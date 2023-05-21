@@ -25,24 +25,25 @@ const UpdateToys = () => {
         const updateToy = { quantity, Price, Rating, description }
         console.log(updateToy);
 
-        fetch(`https://toy-marketplace-server-eta-three.vercel.app/teddys/${_id}`,{
+        fetch(`https://toy-marketplace-server-eta-three.vercel.app/updateToys/${_id}`, {
+            
             method: 'PUT',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(updateToy)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount){
-                Swal.fire(
-                    'Good job!',
-                    'Your Toys Update Successfully',
-                    'success'
-                  )
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    Swal.fire(
+                        'Good job!',
+                        'Your Toys Update Successfully',
+                        'success'
+                    )
+                }
+            })
     }
 
     return (
@@ -145,7 +146,7 @@ const UpdateToys = () => {
                         </label>
                     </div>
                 </div>
-                <input type="submit" value="Add Coffee" className="btn btn-block" />
+                <input type="submit" value="Update Toys" className="btn btn-block" />
             </form>
         </div>
     );

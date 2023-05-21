@@ -144,7 +144,7 @@ const AddToys = () => {
                         </label>
                     </div>
                 </div>
-                <input type="submit" value="Add Coffee" className="btn btn-block" />
+                <input type="submit" value="Add A Toy" className="btn btn-block" />
             </form>
         </div>
     );
