@@ -8,13 +8,13 @@ const PrivateRoute = ({children}) => {
     // console.log(location);
     
     if(loader){
-        return <progress className="progress w-56"></progress>
+        return <h2>Loading...</h2>
     }
 
     if(users){
-        return children
+        return (children)
     }
-    return <Navigate  state={{from: location}} to='/login' replace/>
+    return <Navigate to='/login' state={{from: location}}  replace/>
 };
 
 export default PrivateRoute;

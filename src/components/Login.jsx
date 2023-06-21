@@ -37,11 +37,16 @@ const Login = () => {
     const handleGoogleLogin = () => {
 
         googleLogin()
+        .then(result => {
+            const loggedUser = result.user
+            console.log(loggedUser);
+        })
+        .catch(err => console.log(err))
         navigate(from, { replace: true })
     }
 
     return (
-        <div className="hero mt-20" data-aos="zoom-in">
+        <div className="hero mt-20" >
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>

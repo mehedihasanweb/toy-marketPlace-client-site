@@ -1,10 +1,10 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 const Footer = () => {
     return (
         // <footer>
-        <div data-aos="fade-up" className='mb-4 bg-slate-700 text-white p-12'>
+        <div className='mb-4 bg-slate-700 text-white p-12'>
             <img className='mx-auto' src="https://bw-petito-demo2.bzotech.com/wp-content/uploads/2023/03/logo-1.svg" alt="" />
             <div className="grid mt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div className="">

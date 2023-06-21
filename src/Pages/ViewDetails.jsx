@@ -1,13 +1,15 @@
 import { useLoaderData } from 'react-router-dom';
+import { MotionAnimate } from 'react-motion-animate';
 
 const ViewDetails = () => {
     const loadedData = useLoaderData()
-    // console.log(loadedData);
+    console.log(loadedData);
     const { Picture, Name, Price, Rating, SellerName, description, quantity, sellerMail } = loadedData
 
     return (
-        <div data-aos="zoom-in" className="card w-96 my-20 mx-auto glass">
-            <figure><img src={Picture} alt="car!" /></figure>
+        <MotionAnimate animation='fadeInUp' reset={true}>
+            <div className="card w-96 my-20 mx-auto ">
+            <img src={Picture} alt="car!" />
             <div className="card-body">
                 <h2 className="text-2xl font-bold">Name: {Name}</h2>
                 <p className='text-xl font-bold'>SellerName: {SellerName}</p>
@@ -18,6 +20,7 @@ const ViewDetails = () => {
                 <p className='text-gray-600'>Description: {description}</p>
             </div>
         </div>
+        </MotionAnimate>
     );
 };
 

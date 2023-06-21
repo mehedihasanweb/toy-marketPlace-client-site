@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { MotionAnimate } from 'react-motion-animate';
 
 const MyToys = () => {
     const { users } = useContext(AuthContext)
-    console.log(users);
+    // console.log(users);
 
     const [toys, setToys] = useState([])
 
@@ -45,16 +46,19 @@ const MyToys = () => {
 
 
     }
+    const [asc, setAsc] = useState(true)
 
     useEffect(() => {
-        fetch(`https://toy-marketplace-server-eta-three.vercel.app/bookings?sellerMail=${users.email}`)
+        fetch(`https://toy-marketplace-server-eta-three.vercel.app/bookings?sellerMail=${users.email}&sort=${asc ? 'asc' : 'des'}`)
             .then(res => res.json())
             .then(data => setToys(data))
-    }, [])
-
+    }, [asc])
+    // https://toy-marketplace-server-eta-three.vercel.app
 
     return (
-        <div data-aos="zoom-in" className="overflow-x-auto">
+        <MotionAnimate animation='fadeInUp' reset={true}>
+            <div className="overflow-x-auto">
+            <button onClick={()=>setAsc(!asc)} className='flex mx-auto mb-3 btn btn-primary'>{asc ? 'Asending' : 'desending'}</button>
             <table className="table table-compact w-full">
                 <thead>
                     <tr>
@@ -71,7 +75,7 @@ const MyToys = () => {
                 <tbody>
                     {toys.map((toy, index) => (
 
-                        <tr>
+                        <tr key={toy._id}>
                             <th>{index + 1}</th>
                             <td>{toy.Name}</td>
                             <td>{toy.SellerName}</td>
@@ -86,6 +90,7 @@ const MyToys = () => {
                 </tbody>
             </table>
         </div>
+        </MotionAnimate>
     );
 };
 

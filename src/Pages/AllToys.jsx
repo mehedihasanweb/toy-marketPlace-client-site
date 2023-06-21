@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { MotionAnimate } from 'react-motion-animate';
 
 
 const AllToys = () => {
@@ -31,42 +32,44 @@ const AllToys = () => {
     const limitedToys = filteredToys.slice(0, limit);
 
     return (
-        <div data-aos="zoom-in" className="overflow-x-auto">
-            <h1 className='text-3xl text-center font-semibold'>All Toys</h1>
-            <div className='flex my-6 justify-center'>
-                <input type="text" value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)} className='p-1 mr-2 border-2 rounded-lg pl-4' placeholder='Search' />
-                <button className='btn btn-outline btn-error'>Search</button>
-            </div>
-            <table className="table table-compact w-full">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Seller</th>
-                        <th>Sub-Category</th>
-                        <th>Price</th>
-                        <th>Available Quantity</th>
-                        <th>View Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {limitedToys.map((data, index) => (
-
-                        <tr key={data._id}>
-                            <th>{index + 1}</th>
-                            <td>{data.Name}</td>
-                            <td>{data.SellerName}</td>
-                            <td>{data.SubCategoryName}</td>
-                            <td>{data.Price}</td>
-                            <td>{data.quantity}</td>
-                            <td><Link to={`/details/${data._id}`}><button onClick={handleViewDetails} className='btn btn-outline btn-error'>View Details</button></Link></td>
+        <MotionAnimate animation='fadeInUp' reset={true}>
+            <div className="overflow-x-auto">
+                <h1 className='text-3xl text-center font-semibold'>All Toys</h1>
+                <div className='flex my-6 justify-center'>
+                    <input type="text" value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)} className='p-1 mr-2 border-2 rounded-lg pl-4' placeholder='Search' />
+                    <button className='btn btn-outline btn-error'>Search</button>
+                </div>
+                <table className="table table-compact w-full">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Seller</th>
+                            <th>Sub-Category</th>
+                            <th>Price</th>
+                            <th>Available Quantity</th>
+                            <th>View Details</th>
                         </tr>
-                    ))}
+                    </thead>
+                    <tbody>
+                        {limitedToys.map((data, index) => (
 
-                </tbody>
-            </table>
-        </div>
+                            <tr key={data._id}>
+                                <th>{index + 1}</th>
+                                <td>{data.Name}</td>
+                                <td>{data.SellerName}</td>
+                                <td>{data.SubCategoryName}</td>
+                                <td>{data.Price}</td>
+                                <td>{data.quantity}</td>
+                                <td><Link to={`/teddys/${data._id}`}><button onClick={handleViewDetails} className='btn btn-outline btn-error'>View Details</button></Link></td>
+                            </tr>
+                        ))}
+
+                    </tbody>
+                </table>
+            </div>
+        </MotionAnimate>
     );
 };
 
